@@ -11,40 +11,42 @@
 <link rel="stylesheet" href="/app.css">
 </head>
 <body data-mode="boot">
-<div class="app">
-  <header class="topbar">
+<header class="topbar">
+  <div class="topbar-inner">
     <div class="brand">
-      <span class="mark" aria-hidden="true"></span>
-      <div>
-        <p class="eyebrow">本机 · 不联网</p>
-        <h1>离线保险库</h1>
-      </div>
+      <span class="seal" aria-hidden="true">保</span>
+      <h1>离线保险库</h1>
+      <span class="brand-note">仅本机 · 不联网</span>
     </div>
-    <div class="top-actions">
-      <p id="idle" class="idle"></p>
+    <div class="session">
       <label id="idle-control" class="idle-control" hidden>
-        <span>空闲锁定</span>
-        <select id="idle-select">
-          <option value="60">1 分钟</option>
-          <option value="180">3 分钟</option>
-          <option value="300">5 分钟</option>
-          <option value="900">15 分钟</option>
-        </select>
+        <span class="idle-label">自动锁定</span>
+        <span id="idle" class="idle"></span>
+        <span class="select-wrap">
+          <select id="idle-select" aria-label="空闲多久后锁定">
+            <option value="60">空闲 1 分钟</option>
+            <option value="180">空闲 3 分钟</option>
+            <option value="300">空闲 5 分钟</option>
+            <option value="900">空闲 15 分钟</option>
+          </select>
+        </span>
       </label>
-      <button id="lock-btn" class="ghost" type="button" hidden>锁定</button>
+      <button id="lock-btn" class="btn" type="button" hidden>锁定</button>
     </div>
-  </header>
-  <div id="conn" class="conn" hidden>
+  </div>
+</header>
+<div class="app">
+  <div id="conn" class="conn" hidden role="alert">
     <p id="conn-text">和本机服务失去联系。</p>
-    <button id="conn-retry" type="button" class="ghost">重试</button>
+    <button id="conn-retry" type="button" class="btn">重试</button>
   </div>
-  <div id="lockwarn" class="lockwarn" hidden>
+  <div id="lockwarn" class="lockwarn" hidden role="alert">
     <p>马上就要锁定，未保存的修改会被擦掉。</p>
-    <button id="poke" type="button">我在，先别锁</button>
+    <button id="poke" type="button" class="btn">我在，先别锁</button>
   </div>
-  <main id="view"></main>
+  <main id="view"><p class="booting">正在连接本机服务…</p></main>
   <footer>
-    <p id="foot-path"></p>
+    <div id="foot-path" class="foot-meta"></div>
     <p>主密码无法找回。助记词请另外手抄一份。此工具不推导私钥，也不连接钱包或银行。</p>
   </footer>
 </div>
