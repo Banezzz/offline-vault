@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; connect-src 'self'; img-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
+<title>离线保险库</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/app.css">
+</head>
+<body data-mode="boot">
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <span class="mark" aria-hidden="true"></span>
+      <div>
+        <p class="eyebrow">本机 · 不联网</p>
+        <h1>离线保险库</h1>
+      </div>
+    </div>
+    <div class="top-actions">
+      <p id="idle" class="idle"></p>
+      <label id="idle-control" class="idle-control" hidden>
+        <span>空闲锁定</span>
+        <select id="idle-select">
+          <option value="60">1 分钟</option>
+          <option value="180">3 分钟</option>
+          <option value="300">5 分钟</option>
+          <option value="900">15 分钟</option>
+        </select>
+      </label>
+      <button id="lock-btn" class="ghost" type="button" hidden>锁定</button>
+    </div>
+  </header>
+  <div id="conn" class="conn" hidden>
+    <p id="conn-text">和本机服务失去联系。</p>
+    <button id="conn-retry" type="button" class="ghost">重试</button>
+  </div>
+  <div id="lockwarn" class="lockwarn" hidden>
+    <p>马上就要锁定，未保存的修改会被擦掉。</p>
+    <button id="poke" type="button">我在，先别锁</button>
+  </div>
+  <main id="view"></main>
+  <footer>
+    <p id="foot-path"></p>
+    <p>主密码无法找回。助记词请另外手抄一份。此工具不推导私钥，也不连接钱包或银行。</p>
+  </footer>
+</div>
+<div id="toast" class="toast" hidden role="status"></div>
+<div id="dialog" hidden></div>
+<noscript><p class="noscript">需要启用 JavaScript。脚本只从本机页面加载，不会访问外网。</p></noscript>
+<script src="/app.js"></script>
+</body>
+</html>
